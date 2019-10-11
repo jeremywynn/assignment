@@ -10,7 +10,7 @@ Within this repository, you'll find the foundation of the project created with N
 
 If you have any comments or questions about the design, please use the commenting feature within Zeplin as everyone will be added to your project to assist with anything you need.  If you have any other general issues, please feel free to send me an email and ask.
 
-Once completed, please _do not_ push commits to the original project.  Please fork into your own repository, or push commits to a new origin of your choosing.
+Once completed, please _do not_ push commits to the original project.  Please fork into your own repository, or push commits to a new origin of your choosing.  In order to fork, log into a Bitbucket account and select the "+" sign on the far left of the screen.
 
 Thank you for taking the time to work on this.  We really appreciate it, and look forward to working with you in the future.
 
