@@ -1,10 +1,10 @@
 # Gfinity Front-end Assignment
 
-Thank you for you time thus far interviewing with us.  We've created this assignment to resemble something we work on routinely.  
+Thank you for your time thus far interviewing with us.  We've created this assignment to resemble something we work on routinely.  
 
-This micro-app is intended to simulate a 1v1 matchmaking experience in which you've created a match making lobby to find a match. 
+This micro-app is intended to simulate a 1v1 matchmaking experience in which you've created a matchmaking lobby to find a match. 
 You're able to invite teammates or play by yourself, set various match settings, and ultimately join the queue to find an opponent.
-There are 3 phases to this process - configuring your lobby, joining the queue, and accepting your match.  We've also paired a styleguide to help you further amplify the experience with other assets, animations, or interactions.
+There are 3 phases to this process - configuring your lobby, joining the queue, and accepting your match.  We've also paired a style guide to help you further amplify the experience with other assets, animations, or interactions.
 
 Within this repository, you'll find the foundation of the project created with Nuxt to help you get started.  Ideally, Nuxt should use its SSR mode to serve the project.  
 
