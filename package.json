@@ -1,8 +1,8 @@
 {
 	"name": "assignment",
 	"version": "1.0.0",
-	"description": "Cevo assignment",
-	"author": "Cevo",
+	"description": "Gfinity assignment",
+	"author": "Gfinity",
 	"private": true,
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",

@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="flex flex-col items-center">
-			<img src="~/assets/images/cevo-logo.png" alt="cevo-logo" />
+			<img src="~/assets/images/gfinity-logo.png" alt="gfinity-logo" />
 			<dummy-component></dummy-component>
 			<div class="links">
 				<a

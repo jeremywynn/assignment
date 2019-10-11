@@ -1,6 +1,6 @@
 # assignment
 
-> Cevo assignment
+> Gfinity assignment
 
 ## Build Setup
 
