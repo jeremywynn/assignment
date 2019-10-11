@@ -1,6 +1,18 @@
-# assignment
+# Gfinity Front-end Assignment
 
-> Gfinity assignment
+Thank you for you time thus far interviewing with us.  We've created this assignment to resemble something we work on routinely.  
+
+This micro-app is intended to simulate a 1v1 matchmaking experience in which you've created a match making lobby to find a match. 
+You're able to invite teammates or play by yourself, set various match settings, and ultimately join the queue to find an opponent.
+There are 3 phases to this process - configuring your lobby, joining the queue, and accepting your match.  We've also paired a styleguide to help you further amplify the experience with other assets, animations, or interactions.
+
+Within this repository, you'll find the foundation of the project created with Nuxt to help you get started.  Ideally, Nuxt should use its SSR mode to serve the project.  
+
+If you have any comments or questions about the design, please use the commenting feature within Zeplin as everyone will be added to your project to assist with anything you need.  If you have any other general issues, please feel free to send me an email and ask.
+
+Once completed, please _do not_ push commits to the original project.  Please fork into your own repository, or push commits to a new origin of your choosing.
+
+Thank you for taking the time to work on this.  We really appreciate it, and look forward to working with you in the future.
 
 ## Build Setup
 
