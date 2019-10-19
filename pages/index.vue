@@ -1,67 +1,79 @@
 <template>
 	<div class="shell">
-		<img
-			src="~/assets/images/fifa-19-ronaldo-fg-lg@3x.png"
-			alt=""
-			:class="['shell-bg', { active: playerStatus !== 'initial' }]"
-		/>
-		<appHeader />
-		<div v-if="playerStatus === 'initial'" class="start">
-			<div class="brow">
-				<div class="back">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 10">
-						<path d="M6 0L0 5l6 5V6h16V4H6z" />
-					</svg>
-				</div>
-				<div class="venue">Matchmaking Lobby</div>
-			</div>
-			<div class="lobby">
-				<div class="lobby__main">
-					<div class="lobby-header">
-						<div class="lobby-owner">
-							<h1 class="owner-name">steveroesler’s lobby</h1>
-							<div class="lobby-access">
-								<img src="~/assets/images/gf-lock.svg" alt="" />
-							</div>
-						</div>
-					</div>
-					<div class="lobby-tag">FIFA 19</div>
-					<div v-if="teammates" v-dragscroll="true" class="players">
-						<player
-							v-for="teammate in teammates"
-							:key="teammate.name"
-							:player="teammate"
-							:players="players"
-						/>
-						<player
-							v-if="teammates.length < 4"
-							:player="invitation"
-							:players="players"
-						/>
-					</div>
-				</div>
-				<div class="settings">
-					<gameOptions
-						v-for="option in options"
-						:key="option.name"
-						:option="option"
-					/>
-				</div>
-				<div class="play" @click="playNow">
-					<div class="play__label">Play Now</div>
-					<div class="play__queue">4,021 in Queue</div>
-					<div class="play__trigger">
+		<v-app>
+			<img
+				src="~/assets/images/fifa-19-ronaldo-fg-lg@3x.png"
+				alt=""
+				:class="['shell-bg', { active: playerStatus !== 'initial' }]"
+			/>
+			<appHeader />
+			<div v-if="playerStatus === 'initial'" class="start">
+				<div class="brow">
+					<div class="back">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 22 12"
+							viewBox="0 0 22 10"
 						>
-							<path d="M16 0l6 6-6 6V7.2H0V4.8h16z" />
+							<path d="M6 0L0 5l6 5V6h16V4H6z" />
 						</svg>
+					</div>
+					<div class="venue">Matchmaking Lobby</div>
+				</div>
+				<div class="lobby">
+					<div class="lobby__main">
+						<div class="lobby-header">
+							<div class="lobby-owner">
+								<h1 class="owner-name">steveroesler’s lobby</h1>
+								<div class="lobby-access">
+									<img
+										src="~/assets/images/gf-lock.svg"
+										alt=""
+									/>
+								</div>
+							</div>
+						</div>
+						<div class="lobby-tag">FIFA 19</div>
+						<div
+							v-if="teammates"
+							v-dragscroll="true"
+							class="players"
+						>
+							<player
+								v-for="teammate in teammates"
+								:key="teammate.name"
+								:player="teammate"
+								:players="players"
+							/>
+							<player
+								v-if="teammates.length < 4"
+								:player="invitation"
+								:players="players"
+							/>
+						</div>
+					</div>
+					<div class="settings">
+						<gameOptions
+							v-for="option in options"
+							:key="option.name"
+							:option="option"
+						/>
+					</div>
+					<div class="play" @click="playNow">
+						<div class="play__label">Play Now</div>
+						<div class="play__queue">4,021 in Queue</div>
+						<div class="play__trigger">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 12"
+							>
+								<path d="M16 0l6 6-6 6V7.2H0V4.8h16z" />
+							</svg>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<matchmaking v-else :teammates="teammates" />
+			<matchmaking v-else :teammates="teammates" />
+		</v-app>
 	</div>
 </template>
 
