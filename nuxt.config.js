@@ -45,7 +45,7 @@ module.exports = {
 		'@nuxtjs/vuetify',
 	],
 	vuetify: {
-		
+		defaultAssets: false
 	},
 	/*
 	 ** Nuxt.js modules
