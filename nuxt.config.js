@@ -30,16 +30,23 @@ module.exports = {
 	/*
 	 ** Plugins to load before mounting the App
 	 */
-	plugins: [],
+	plugins: [
+		{ src: '~/plugins/vue-dragscroll', ssr: false },
+	],
 	/*
 	 ** Nuxt.js dev-modules
 	 */
 	buildModules: [
 		// Doc: https://github.com/nuxt-community/eslint-module
-		'@nuxtjs/eslint-module',
+		// '@nuxtjs/eslint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-		'@nuxtjs/tailwindcss'
+		'@nuxtjs/tailwindcss',
+		// Doc: https://github.com/nuxt-community/vuetify-module
+		'@nuxtjs/vuetify',
 	],
+	vuetify: {
+		
+	},
 	/*
 	 ** Nuxt.js modules
 	 */
@@ -59,6 +66,18 @@ module.exports = {
 		/*
 		 ** You can extend webpack config here
 		 */
-		extend(config, ctx) {}
+		extend(config, ctx) {
+			if (ctx.isDev && ctx.isClient) {
+				config.module.rules.push({
+					enforce: 'pre',
+					test: /\.(.js|vue)$/,
+					loader: 'eslint-loader',
+					exclude: /(node_modules)/,
+					options: {
+						fix: true
+					}
+				})
+			}
+		}
 	}
 }

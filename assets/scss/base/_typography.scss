@@ -1,0 +1,67 @@
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+@font-face {
+	font-family: 'AkzidenzGroteskBQ';
+	font-stretch: normal;
+	font-style: normal;
+	font-weight: 700;
+	src: url('~static/fonts/akzidenzgrotesk-bold-webfont.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'AkzidenzGroteskBQ-Reg';
+	src: url('~static/fonts/akzidenzgrotesk-regular-webfont.ttf') format('truetype');
+}
+.title-super {
+	font-family: 'AkzidenzGroteskBQ';
+	@include fontSize(48px);
+	letter-spacing: -3px;
+	line-height: 0.92;
+}
+.title-large {
+	font-family: 'AkzidenzGroteskBQ';
+	@include fontSize(36px);
+	letter-spacing: -2px;
+	line-height: 1.22;
+}
+.body-type {
+	font-family: 'AkzidenzGroteskBQ-Reg';
+	@include fontSize(18px);
+	letter-spacing: -0.75px;
+	line-height: 1.22;
+}
+.callout-medium {
+	font-family: 'AkzidenzGroteskBQ';
+	@include fontSize(16px);
+	letter-spacing: -0.5px;
+	line-height: normal;
+}
+.callout-small-bold {
+	font-family: 'AkzidenzGroteskBQ';
+	@include fontSize(14px);
+	letter-spacing: -0.5px;
+	line-height: normal;
+}
+.callout-small-reg {
+	font-family: 'AkzidenzGroteskBQ-Reg';
+	@include fontSize(14px);
+	letter-spacing: -0.5px;
+	line-height: normal;
+}
+.footnote-type {
+	font-family: 'AkzidenzGroteskBQ-Reg';
+	@include fontSize(12px);
+	letter-spacing: normal;
+	line-height: normal;
+}
+.caption-small {
+	font-family: 'AkzidenzGroteskBQ';
+	@include fontSize(12px);
+	letter-spacing: 1.5px;
+	line-height: normal;
+}

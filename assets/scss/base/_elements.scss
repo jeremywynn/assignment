@@ -1,5 +1,5 @@
 html {
-	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+	font-family: 'AkzidenzGroteskBQ-Reg', -apple-system, BlinkMacSystemFont,
 	'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	font-size: 16px;
 	word-spacing: 1px;
@@ -8,4 +8,214 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
+	background-color: var(--sand);
+	height: 100%;
+}
+body {
+	display: flex;
+	min-height: 100%;
+}
+#__nuxt {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+}
+#__layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+}
+.universe {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	width: 100%;
+}
+.shell {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+	width: 100%;
+}
+.arena {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+}
+.matchmaking {
+	flex: 1 1 auto;
+	padding: 9.25rem calc(0.5rem + 3vw) 3.25rem;
+	.interior {
+		position: relative;
+		z-index: 1;
+	}
+}
+.searching {
+	background-color: var(--darkGray);
+	color: var(--white);
+	position: relative;
+	transform: translateY(-50%);
+	z-index: 2;
+	.action {
+		svg {
+			height: 12px;
+			width: 22px;
+			path {
+				fill: var(--white);
+			}
+		}
+	}
+	&:before {
+		background-color: var(--blue);
+		bottom: 0;
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transition: transform 400ms;
+		transform: scaleX(0);
+		transform-origin: left;
+		width: 100%;
+		z-index: -1;
+	}
+	&--ready {
+		&:before {
+			background-color: var(--blue);
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			transition: background-color 1000ms, transform 1000ms;
+			transform: scaleX(1);
+			transform-origin: left;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+	&.disabled {
+		&:before {
+			background-color: var(--lightGray);
+		}
+	}
+	@media only all and (min-width: 20em) {
+		bottom: 0;
+		position: absolute;
+		right: 0;
+		transform: translateY(50%);
+		width: calc(100% - 4.5rem - 3vw);
+	}
+}
+
+.arena {
+	padding-right: 1.5rem;
+	position: relative;
+	@media only all and (min-width: 20em) {
+		margin-bottom: 4rem;
+	}
+}
+
+/*  Vuetify  */
+
+.universe {
+	.theme--light.v-application {
+		background: none;
+		color: inherit;
+	}
+	.v-application {
+		font-family: inherit;
+		line-height: inherit;
+	}
+	// Selects
+	.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot {
+		box-shadow: none;
+	}
+	.input__slot {
+		padding: 0;
+	}
+	.v-text-field.v-text-field--enclosed .v-text-field__details, .v-text-field.v-text-field--enclosed > .v-input__control > .v-input__slot {
+		padding: 0;
+	}
+	.theme--light.v-text-field--solo > .v-input__control > .v-input__slot {
+		background: none;
+	}
+	.v-input {
+		font-size: inherit;
+		letter-spacing: inherit;
+	}
+	.v-application .primary--text {
+		caret-color: inherit !important;
+		color: inherit !important;
+	}
+	.theme--light.v-input:not(.v-input--is-disabled) input, .theme--light.v-input:not(.v-input--is-disabled) textarea, .theme--light.v-select .v-select__selections {
+		color: inherit;
+	}
+	.v-text-field input {
+		line-height: inherit;
+		padding: 0;
+	}
+	.v-icon.v-icon {
+		display: none;
+	}
+	.v-input__icon {
+		background: transparent url('~assets/images/gf-caret-right.svg') no-repeat center center;
+		height: 12px;
+		min-width: 8px;
+		width: 8px;
+	}
+	.v-text-field.v-text-field--solo .v-input__control {
+		min-height: 0;
+	}
+	.v-text-field.v-text-field--enclosed .v-text-field__details {
+		margin-bottom: 0;
+	}
+	.v-input__slot {
+		margin-bottom: 0;
+	}
+	.v-text-field__details {
+		min-height: 0;
+	}
+	.universe .v-text-field.v-text-field--enclosed .v-text-field__details {
+		display: none;
+	}
+	.v-input__control {
+		flex-direction: inherit;
+		flex-wrap: nowrap;
+	}
+	.v-select__selection--comma {
+		margin: 0;
+	}
+	.theme--light.v-label {
+		color: inherit;
+	}
+	.v-select__selections {
+		line-height: inherit;
+	}
+	.theme--light.v-select .v-select__selections {
+		color: inherit;
+	}
+	.v-text-field--solo fieldset, .v-text-field--solo .v-input__control, .v-text-field--solo .v-input__slot, .v-text-field--outlined fieldset, .v-text-field--outlined .v-input__control, .v-text-field--outlined .v-input__slot {
+		border-radius: 0;
+	}
+	.theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+		color: inherit !important;
+	}
+	.theme--light.v-card {
+		color: inherit;
+	}
+	.v-list {
+		padding: 0;
+	}
+	.v-list-item {
+		min-height: 0;
+	}
 }

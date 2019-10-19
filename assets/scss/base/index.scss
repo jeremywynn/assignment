@@ -1,2 +1,87 @@
+@import 'typography';
+@import 'colors';
 @import 'elements';
 @import 'box-sizing';
+
+.game-title {
+	@extend .callout-small-bold;
+}
+
+.venue {
+  @extend .callout-medium;
+}
+
+.lobby-header {
+  @extend .title-large;
+}
+
+.player-role {
+  @extend .footnote-type;
+}
+
+.player-name {
+  @extend .callout-medium;
+}
+
+.readiness {
+  @extend .caption-small;
+  @include fontSize(10px);
+}
+
+.player-badge {
+	.superscript {
+    @include fontSize(11px);
+		@extend .callout-small-bold;
+	}
+}
+
+.option {
+	&__label {
+		@extend .callout-small-bold;
+  }
+  &__value {
+    @extend .callout-small-reg;
+  }
+}
+
+.play {
+  &__label {
+    @extend .callout-small-bold;
+  }
+  &__queue {
+    @extend .callout-small-reg;
+  }
+}
+
+.matchmaking {
+  .header {
+    @extend .callout-medium;
+  }
+  h1 {
+    @extend .title-super;
+  }
+  .body {
+    @extend .body-type;
+  }
+}
+
+.lobby-area {
+  .label {
+    @extend .footnote-type;
+  }
+}
+.queue {
+  @extend .footnote-type;
+}
+.queue-count {
+  @extend .footnote-type;
+}
+
+.searching {
+  .label {
+    @extend .callout-small-bold;
+  }
+  .time {
+    @extend .callout-small-reg;
+  }
+}

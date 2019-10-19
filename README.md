@@ -18,7 +18,7 @@ Thank you for taking the time to work on this.  We really appreciate it, and loo
 
 ```bash
 # install dependencies
-$ npm run install
+$ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev

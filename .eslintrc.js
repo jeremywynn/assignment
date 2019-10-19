@@ -1,5 +1,5 @@
 module.exports = {
-	root: true,
+	root: false,
 	env: {
 		browser: true,
 		node: true
@@ -29,7 +29,7 @@ module.exports = {
 		// complexity
 		complexity: ['error', 16],
 		'max-depth': ['error', 3], // preventing if () { if () { if () {}}}
-		'max-lines-per-function': ['error', 50], // break functions into logical pieces
+		'max-lines-per-function': ['error', 80], // break functions into logical pieces
 		'max-params': ['error', 3], // pass through value objects instead of individual parameters
 		'max-nested-callbacks': ['error', 2] // this should rarely happen when async/await is used
 	}
