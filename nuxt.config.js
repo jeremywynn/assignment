@@ -42,10 +42,14 @@ module.exports = {
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
 		'@nuxtjs/tailwindcss',
 		// Doc: https://github.com/nuxt-community/vuetify-module
-		'@nuxtjs/vuetify',
+		['@nuxtjs/vuetify']
 	],
 	vuetify: {
-		defaultAssets: false
+		defaultAssets: false,
+		theme: {
+			light: true
+		},
+		treeShake: true,
 	},
 	/*
 	 ** Nuxt.js modules
