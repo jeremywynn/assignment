@@ -1,6 +1,8 @@
 <template>
 	<div class="universe">
-		<nuxt />
+		<v-app>
+			<nuxt />
+		</v-app>
 	</div>
 </template>
 
