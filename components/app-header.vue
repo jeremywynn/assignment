@@ -4,13 +4,18 @@
 			<a href="">
 				<img src="~/assets/images/gfinity-logo-neg.svg" alt="" />
 			</a>
-			<div v-if="playerStatus !== 'initial'" class="tab">
-				<div class="back" @click="goBack">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 10">
-						<path d="M6 0L0 5l6 5V6h16V4H6z" />
-					</svg>
+			<transition name="fade" mode="out-in">
+				<div v-if="playerStatus !== 'initial'" class="tab">
+					<div class="back" @click="goBack">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 22 10"
+						>
+							<path d="M6 0L0 5l6 5V6h16V4H6z" />
+						</svg>
+					</div>
 				</div>
-			</div>
+			</transition>
 		</div>
 		<div class="menu-area">
 			<div class="game-title">FIFA 19</div>

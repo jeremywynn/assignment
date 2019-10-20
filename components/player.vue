@@ -1,5 +1,5 @@
 <template>
-	<div class="player carousel-cell">
+	<div class="player">
 		<div
 			v-if="player.avatar"
 			class="player__portrait filled"
@@ -21,12 +21,14 @@
 						@change="addToRoster"
 					>
 						<option disabled value="" hidden>Invite Player</option>
-						<option
-							v-for="friend in players"
-							:key="friend.name"
-							:value="friend.name"
-							>{{ friend.name }}</option
-						>
+						<template v-for="friend in players">
+							<option
+								v-if="!friend.teammate"
+								:key="friend.name"
+								:value="friend.name"
+								>{{ friend.name }}</option
+							>
+						</template>
 					</select>
 				</div>
 			</div>
@@ -48,13 +50,9 @@ export default {
 		players: Array
 	},
 	data: () => ({
-		// selectedPlayer: null
 		selectedPlayer: ''
 	}),
 	methods: {
-		alertme() {
-			alert('alert!')
-		},
 		addToRoster() {
 			this.$root.$emit('addTeammate', this.selectedPlayer)
 			this.selectedPlayer = ''
@@ -76,9 +74,9 @@ export default {
 		border: 1px solid var(--concrete);
 		border-radius: 6px;
 		margin-bottom: 1rem;
-
 		min-height: 187px;
 		overflow: hidden;
+		transition: box-shadow 400ms ease-in;
 		width: 100%;
 		&.filled {
 			box-shadow: 0px 0px 12px 2px var(--concrete);
@@ -114,7 +112,6 @@ export default {
 }
 .invite-player {
 	cursor: pointer;
-	// display: inline-block;
 }
 
 select option {
@@ -149,13 +146,7 @@ select option:disabled {
 .select-css::-ms-expand {
 	display: none;
 }
-.select-css:hover {
-}
 .select-css:focus {
-	// border-color: #aaa;
-	// box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-	// box-shadow: 0 0 0 3px -moz-mac-focusring;
-	// color: #222;
 	outline: none;
 }
 .select-css option {

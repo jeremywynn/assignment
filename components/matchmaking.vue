@@ -6,7 +6,7 @@
 				<h1 v-if="playerStatus === 'searching'">
 					Searching for compatible components
 				</h1>
-				<h1 v-if="playerStatus === 'matched'">
+				<h1 v-else>
 					A match has been found for you!
 				</h1>
 				<div class="body">
@@ -14,7 +14,7 @@
 						We’re searching our database of players to pair you with
 						an opponent of similar skill
 					</p>
-					<p v-if="playerStatus === 'matched'">
+					<p v-else>
 						We’ve found a compatible opponent for you to play
 						{{ gamemode }} with in FIFA 19
 					</p>
@@ -36,7 +36,7 @@
 					<div v-if="playerStatus === 'searching'" class="queue">
 						<span class="queue-count">4,021</span> in Queue
 					</div>
-					<div v-if="playerStatus === 'matched'" class="queue">
+					<div v-else class="queue">
 						By tapping accept, you agree to play a match that may
 						last for up to 30 minutes.
 					</div>
@@ -46,7 +46,8 @@
 		<div
 			:class="[
 				'searching',
-				{ 'searching--ready': playerStatus === 'matched' }
+				{ 'searching--ready': playerStatus === 'matched' },
+				{ 'searching--disabled': playerStatus === 'playing' }
 			]"
 			@click="acceptMatch"
 		>
@@ -61,8 +62,17 @@
 					<template v-if="playerStatus === 'matched'">
 						Accept
 					</template>
+					<template v-if="playerStatus === 'playing'">
+						Match underway<span class="ellipses"
+							><span class="dot">.</span><span class="dot">.</span
+							><span class="dot">.</span></span
+						>
+					</template>
 				</div>
-				<div id="timer" class="time">00:00</div>
+				<div v-if="playerStatus !== 'playing'" class="time">
+					<span v-if="playerStatus === 'matched'">-</span
+					><span id="timer">00:00</span>
+				</div>
 				<div class="action">
 					<svg
 						v-if="playerStatus === 'searching'"
@@ -96,93 +106,71 @@
 
 <script>
 export default {
+	transition: {
+		name: 'test',
+		mode: 'out-in',
+		enterClass: 'entering'
+	},
 	props: {
 		teammates: Array
 	},
-	data() {
-		return {
-			bypassQueueTimerID: null,
-			queueTimerID: null,
-			timerID: null
-		}
-	},
+	data: () => ({
+		bypassQueueTimerID: null,
+		queueTimerID: null,
+		reInitializeID: null,
+		timerID: null
+	}),
 	computed: {
 		gamemode() {
-			const chosenGamemode = this.$parent.selectedGameOptions.filter(
+			const chosenGamemode = this.$parent.selectedGameOptions.find(
 				gameOption => gameOption.title === 'Gamemode'
 			)
-			return chosenGamemode[0].value
+			return chosenGamemode.value
 		},
 		playerStatus() {
 			return this.$store.state.status
 		}
 	},
 	destroyed() {
-		if (this.timerID) {
-			window.clearInterval(this.timerID)
-		}
-		if (this.queueTimerID) {
-			window.clearInterval(this.queueTimerID)
-		}
+		window.clearInterval(this.timerID)
+		window.clearInterval(this.queueTimerID)
 		window.clearTimeout(this.bypassQueueTimerID)
+		window.clearTimeout(this.reInitializeID)
 	},
 	mounted() {
-		this.startSearchTimer(document.querySelector('#timer'))
+		this.startTimer(document.querySelector('#timer'))
 		// Make match found in 10 seconds from now
 		this.bypassQueueTimerID = window.setTimeout(() => {
-			localStorage.setItem('status', 'matched')
 			this.$store.dispatch('editStatus', 'matched')
 			window.clearInterval(this.queueTimerID)
-			this.startAcceptTimer(document.querySelector('#timer'))
+			this.startTimer(document.querySelector('#timer'))
 		}, 10000)
 	},
 	methods: {
 		acceptMatch() {
 			if (this.playerStatus === 'matched') {
-				localStorage.setItem('status', 'initial')
-				this.$store.dispatch('editStatus', 'initial')
+				window.clearInterval(this.timerID)
+				this.$store.dispatch('editStatus', 'playing')
+				this.reInitializeID = window.setTimeout(() => {
+					this.$store.dispatch('editStatus', 'initial')
+					this.$root.$emit('reInitialize')
+				}, 5000)
 			}
 		},
 		cancelSearch() {
 			this.$store.dispatch('editStatus', 'initial')
 		},
-		startAcceptTimer(display) {
+		startTimer(display) {
 			const start = Date.now()
 			let timeElapsed
 			let minutes
 			let seconds
 			function timer() {
-				// get the number of seconds that have elapsed since
 				timeElapsed = (Date.now() - start) / 1000
-
-				// does the same job as parseInt truncates the float
 				minutes = (timeElapsed / 60) | 0
 				seconds = timeElapsed % 60 | 0
-
 				minutes = minutes < 10 ? '0' + minutes : minutes
 				seconds = seconds < 10 ? '0' + seconds : seconds
-
-				display.textContent = '-' + minutes + ':' + seconds
-			}
-			timer()
-			this.timerID = window.setInterval(timer, 1000)
-		},
-		startSearchTimer(display) {
-			const start = Date.now()
-			let timeElapsed
-			let minutes
-			let seconds
-			function timer() {
-				// get the number of seconds that have elapsed since
-				timeElapsed = (Date.now() - start) / 1000
-
-				// does the same job as parseInt truncates the float
-				minutes = (timeElapsed / 60) | 0
-				seconds = timeElapsed % 60 | 0
-
-				minutes = minutes < 10 ? '0' + minutes : minutes
-				seconds = seconds < 10 ? '0' + seconds : seconds
-
 				display.textContent = minutes + ':' + seconds
 			}
 			timer()
@@ -300,6 +288,10 @@ export default {
 		.cta-components {
 			grid-template-columns: 1fr 3rem 22px;
 		}
+	}
+	&--disabled {
+		background-color: rgba(#293894, 0.5);
+		cursor: default;
 	}
 }
 @keyframes ellipses {
