@@ -32,4 +32,18 @@
 		}
 	}
 }
+.universe {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 100%;
+	width: 100%;
+}
+.shell {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+	width: 100%;
+}
 </style>
