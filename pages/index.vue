@@ -296,7 +296,7 @@ export default {
 }
 .lobby__main {
 	flex: 1;
-	padding: 0.7rem 1rem 0;
+	padding: 0.9rem 1rem 0;
 	position: relative;
 	z-index: 2;
 }
