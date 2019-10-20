@@ -26,7 +26,7 @@
 						</div>
 					</div>
 					<div class="lobby-tag">FIFA 19</div>
-					<div v-if="teammates" v-dragscroll="true" class="players">
+					<div v-if="teammates" class="players">
 						<player
 							v-for="teammate in teammates"
 							:key="teammate.name"
@@ -180,14 +180,16 @@ export default {
 			this.selectedGameOptions[pertinentOption].value = option.optionValue
 		},
 		addTeammate(teammate) {
-			const chosenPlayer = this.players.filter(
-				player => player.name === teammate
-			)
-			this.players.splice(
-				this.players.findIndex(player => player.name === teammate),
-				1
-			)
-			this.teammates.push(chosenPlayer[0])
+			if (teammate) {
+				const chosenPlayer = this.players.filter(
+					player => player.name === teammate
+				)
+				this.players.splice(
+					this.players.findIndex(player => player.name === teammate),
+					1
+				)
+				this.teammates.push(chosenPlayer[0])
+			}
 		},
 		cancelSearch() {
 			localStorage.setItem('status', 'initial')
@@ -218,7 +220,9 @@ export default {
 		top: 4.75rem;
 		mix-blend-mode: multiply;
 		object-fit: cover;
+		pointer-events: none;
 		transition: 1000ms;
+		user-select: none;
 		z-index: 1;
 
 		transform: translate(40%, -54%);
@@ -299,7 +303,7 @@ export default {
 .players {
 	display: flex;
 	margin: 1rem 0;
-	overflow: hidden;
+	overflow-x: auto;
 	position: relative;
 	z-index: 2;
 }

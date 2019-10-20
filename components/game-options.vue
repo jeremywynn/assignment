@@ -20,7 +20,7 @@
 					</svg>
 				</div>
 			</div>
-			<v-expand-transition v-if="option.values.length > 0">
+			<transition-expand>
 				<div v-show="revealed" id="options" class="options">
 					<div
 						v-if="defaultOption !== value.name"
@@ -33,13 +33,17 @@
 						<div class="option__trigger"></div>
 					</div>
 				</div>
-			</v-expand-transition>
+			</transition-expand>
 		</div>
 	</div>
 </template>
 
 <script>
+import TransitionExpand from '@@/components/TransitionExpand.vue'
 export default {
+	components: {
+		TransitionExpand
+	},
 	props: {
 		option: Object
 	},
@@ -93,5 +97,9 @@ export default {
 			width: 12px;
 		}
 	}
+}
+.expand-enter-active,
+.expand-leave-active {
+	transition-property: height;
 }
 </style>

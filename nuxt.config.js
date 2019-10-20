@@ -30,9 +30,7 @@ module.exports = {
 	/*
 	 ** Plugins to load before mounting the App
 	 */
-	plugins: [
-		{ src: '~/plugins/vue-dragscroll', ssr: false },
-	],
+	plugins: [],
 	/*
 	 ** Nuxt.js dev-modules
 	 */
@@ -41,22 +39,14 @@ module.exports = {
 		// '@nuxtjs/eslint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
 		'@nuxtjs/tailwindcss',
-		// Doc: https://github.com/nuxt-community/vuetify-module
-		['@nuxtjs/vuetify']
 	],
-	vuetify: {
-		defaultAssets: false,
-		theme: {
-			light: true
-		},
-		treeShake: true,
-	},
 	/*
 	 ** Nuxt.js modules
 	 */
 	modules: [
 		// Doc: https://axios.nuxtjs.org/usage
-		'@nuxtjs/axios'
+		'@nuxtjs/axios',
+		
 	],
 	/*
 	 ** Axios module configuration

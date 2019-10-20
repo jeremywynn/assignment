@@ -15,14 +15,19 @@
 					{{ player.name }}
 				</div>
 				<div v-else class="invite-player">
-					<v-select
+					<select
 						v-model="selectedPlayer"
-						:items="players"
-						item-text="name"
-						label="Invite Player"
-						solo
+						class="select-css"
 						@change="addToRoster"
-					></v-select>
+					>
+						<option disabled value="" hidden>Invite Player</option>
+						<option
+							v-for="friend in players"
+							:key="friend.name"
+							:value="friend.name"
+							>{{ friend.name }}</option
+						>
+					</select>
 				</div>
 			</div>
 			<div v-if="player.badge" class="player-status">
@@ -42,21 +47,17 @@ export default {
 		player: Object,
 		players: Array
 	},
-	data() {
-		return {
-			selectedPlayer: null
-		}
-	},
-	// init() {
-	// 	this.$nextTick(() => {
-	// 		this.$flickity = new Flickity(this.$el, this.options)
-	// 		this.$emit('init', this.$flickity)
-	// 	})
-	// },
+	data: () => ({
+		// selectedPlayer: null
+		selectedPlayer: ''
+	}),
 	methods: {
+		alertme() {
+			alert('alert!')
+		},
 		addToRoster() {
-			// alert(this.selectedPlayer)  // Returns the name
 			this.$root.$emit('addTeammate', this.selectedPlayer)
+			this.selectedPlayer = ''
 		}
 	}
 }
@@ -113,6 +114,51 @@ export default {
 }
 .invite-player {
 	cursor: pointer;
-	display: inline-block;
+	// display: inline-block;
+}
+
+select option {
+	padding: 0 0.25rem;
+}
+// select option:disabled {
+// 	display: none;
+// }
+.select-css {
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	font-family: inherit;
+	color: inherit;
+	padding: 0 0.25em;
+	width: calc(100% + 2px);
+	max-width: 100%;
+	box-sizing: border-box;
+	border: 0;
+	border-radius: 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	margin: -1px 0 0 -0.25em;
+	background: transparent;
+	background-image: url('~assets/images/gf-caret-right.svg');
+	background-repeat: no-repeat;
+	background-position: right 0.7em top 50%;
+	background-size: 8px 12px;
+	letter-spacing: -0.5px;
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+}
+.select-css:focus {
+	// border-color: #aaa;
+	// box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+	// box-shadow: 0 0 0 3px -moz-mac-focusring;
+	// color: #222;
+	outline: none;
+}
+.select-css option {
+	font-weight: normal;
 }
 </style>
