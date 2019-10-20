@@ -42,6 +42,7 @@
 .shell {
 	display: flex;
 	flex-direction: column;
+	flex: 1;
 	min-height: 100%;
 	overflow: hidden;
 	width: 100%;
