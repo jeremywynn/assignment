@@ -1,6 +1,6 @@
 <template>
 	<div class="arena">
-		<div :class="['matchmaking', { found: playerStatus === 'matched' }]">
+		<div :class="['matchmaking', { found: playerStatus !== 'searching' }]">
 			<div class="interior">
 				<div class="header">Matchmaking Lobby</div>
 				<h1 v-if="playerStatus === 'searching'">

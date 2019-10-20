@@ -82,7 +82,6 @@ export default {
 }
 .menu-area {
 	align-items: center;
-	// background-color: var(--sand);
 	display: grid;
 	grid-column-gap: 2rem;
 	grid-template-columns: 1fr auto;
@@ -103,8 +102,6 @@ export default {
 		display: block;
 		height: 3px;
 		width: 100%;
-	}
-	&:after {
 	}
 	&:before {
 		margin-bottom: 6px;

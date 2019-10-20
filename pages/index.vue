@@ -43,13 +43,11 @@
 								:player="teammate"
 								:players="players"
 							/>
-							<transition name="fade">
-								<player
-									v-if="teammates.length < 4"
-									:player="invitation"
-									:players="players"
-								/>
-							</transition>
+							<player
+								v-if="teammates.length < 4"
+								:player="invitation"
+								:players="players"
+							/>
 						</div>
 					</div>
 					<div class="settings">
@@ -293,6 +291,7 @@ export default {
 	margin-bottom: 0.4rem;
 }
 .owner-name {
+	font-size: inherit;
 	margin-right: 1rem;
 }
 .lobby__main {
@@ -352,9 +351,6 @@ export default {
 	color: var(--lightGray);
 	margin-bottom: 0.5rem;
 }
-.player-name {
-	margin-bottom: 1rem;
-}
 .readiness {
 	border: 1px solid;
 	display: inline-block;
@@ -371,10 +367,6 @@ export default {
 	.superscript {
 		color: var(--red);
 	}
-}
-.invite-player {
-	cursor: pointer;
-	display: inline-block;
 }
 .settings {
 	padding: 0 1rem;

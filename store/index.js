@@ -12,9 +12,4 @@ export const actions = {
   editStatus({ commit }, payload) {
     commit('EDIT_STATUS', payload)
   },
-  // initializeStore({ commit }) {
-  //   if (window.localStorage.getItem('status')) {
-  //     commit('EDIT_STATUS', window.localStorage.getItem('status'))
-  //   }
-  // },
 }
