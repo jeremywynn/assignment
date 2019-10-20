@@ -120,9 +120,9 @@ export default {
 select option {
 	padding: 0 0.25rem;
 }
-// select option:disabled {
-// 	display: none;
-// }
+select option:disabled {
+	display: none;
+}
 .select-css {
 	cursor: pointer;
 	display: block;
